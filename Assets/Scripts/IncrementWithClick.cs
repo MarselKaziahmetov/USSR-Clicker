@@ -7,10 +7,12 @@ public class IncrementWithClick : MonoBehaviour
 {
     public IncrementWithClick Instance { get; private set; }
 
-    [SerializeField] public int currentMoney = 0;
     [SerializeField] public int incrementCount = 1;
-    [SerializeField] public Text moneyText;
+    [SerializeField] private int incrementIncrease = 1;
+
+    [SerializeField] public Text globalMoneyText;
     [SerializeField] public Text moneyReward;
+    [SerializeField] public Text timerText;
 
     private void Awake()
     {
@@ -24,49 +26,27 @@ public class IncrementWithClick : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-   /* public int CurrentMoney
+    public void MoneyAddition()
     {
-        get
-        {
-            return PlayerPrefs.GetInt("Money", 0);
-        }
-        set
-        {
-            PlayerPrefs.SetInt("Money", value);
-        }
-    }
+        Bank.currentMoney += incrementCount;
 
-    public int IncrementCount
-    {
-        get
-        {
-            return incrementCount;
-        }
-        set
-        {
-            incrementCount = value;
-        }
-    }*/
-
-    public void ScoreIncrementation()
-    {
-        currentMoney += incrementCount;
-
-        moneyText.text = currentMoney.ToString();
+        globalMoneyText.text = Bank.currentMoney.ToString();
     }
 
     public void Upgrade(ref int upgradeCost, ref int upgradeLevel, Text upgradeCostLabel, Text upgradeLevelLabel)
     {
-        if (currentMoney >= upgradeCost)
+        if (Bank.currentMoney >= upgradeCost)
         {
-            incrementCount++;
-            currentMoney -= upgradeCost;
+            incrementCount += incrementIncrease;
+            Bank.currentMoney -= upgradeCost;
             
             upgradeCost *= 2;
             upgradeLevel++;
 
             upgradeCostLabel.text = upgradeCost.ToString();
             upgradeLevelLabel.text = upgradeLevel + "/100";
+
+            moneyReward.text = incrementCount.ToString();
         }
     }
 }

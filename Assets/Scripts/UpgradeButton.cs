@@ -11,10 +11,10 @@ public class UpgradeButton : MonoBehaviour
     [SerializeField] private Text upgradeLevelLabel;
     [SerializeField] private IncrementWithClick prototype;
 
-    public void OnClick()
+    public void Upgrade()
     {
         prototype.Instance.Upgrade(ref upgradeCost, ref upgradeLevel, upgradeCostLabel, upgradeLevelLabel);
-        prototype.Instance.moneyText.text = prototype.Instance.currentMoney.ToString();
-        prototype.Instance.moneyReward.text = prototype.Instance.incrementCount.ToString();
+        
+        prototype.Instance.globalMoneyText.text = Bank.currentMoney.ToString();
     }
 }
