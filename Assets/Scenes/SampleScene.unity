@@ -295,10 +295,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   incrementCount: 10
-  incrementIncrease: 10
+  incrementIncrease: 12.4
+  timeToDo: 5
+  difficultMultiple: 1.6
   globalMoneyText: {fileID: 1171829613}
   moneyReward: {fileID: 1134304031}
   timerText: {fileID: 126528425}
+  incrementButton: {fileID: 446835276}
 --- !u!4 &385234715
 Transform:
   m_ObjectHideFlags: 0
@@ -313,6 +316,17 @@ Transform:
   m_Father: {fileID: 174618423}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &446835276 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8973440129615309772, guid: e7a6bb154a2fe56418370790f47069fa, type: 3}
+  m_PrefabInstance: {fileID: 1926325844}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &454021791
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -432,7 +446,7 @@ PrefabInstance:
       objectReference: {fileID: 925330254}
     - target: {fileID: 8973440129615309772, guid: e7a6bb154a2fe56418370790f47069fa, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MoneyAddition
+      value: IncrementationButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7a6bb154a2fe56418370790f47069fa, type: 3}
@@ -530,6 +544,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &864318677 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8973440129615309772, guid: e7a6bb154a2fe56418370790f47069fa, type: 3}
+  m_PrefabInstance: {fileID: 454021791}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &925330253
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,10 +585,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   incrementCount: 1
-  incrementIncrease: 1
+  incrementIncrease: 1.4
+  timeToDo: 0.5
+  difficultMultiple: 1.8
   globalMoneyText: {fileID: 1171829613}
   moneyReward: {fileID: 190340778}
   timerText: {fileID: 1893020131}
+  incrementButton: {fileID: 864318677}
 --- !u!4 &925330255
 Transform:
   m_ObjectHideFlags: 0
@@ -800,7 +828,7 @@ GameObject:
   - component: {fileID: 1171829614}
   - component: {fileID: 1171829613}
   m_Layer: 5
-  m_Name: TextCount
+  m_Name: Value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1246,7 +1274,7 @@ PrefabInstance:
       objectReference: {fileID: 385234714}
     - target: {fileID: 8973440129615309772, guid: e7a6bb154a2fe56418370790f47069fa, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MoneyAddition
+      value: IncrementationButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7a6bb154a2fe56418370790f47069fa, type: 3}

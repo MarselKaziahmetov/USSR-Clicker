@@ -1,4 +1,4 @@
 public class Bank
 {
-    public static int currentMoney = 0;
+    public static float currentMoney = 0;
 }
