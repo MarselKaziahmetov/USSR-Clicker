@@ -232,7 +232,7 @@ GameObject:
   m_Component:
   - component: {fileID: 174618423}
   m_Layer: 0
-  m_Name: IncrementManager
+  m_Name: ButtonsManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -245,14 +245,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 174618422}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 153.02977, y: 970.4428, z: -536.00854}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -182.32426, y: -439.45038, z: -32.845276}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 925330255}
   - {fileID: 385234715}
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 505340395}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &190340778 stripped
 MonoBehaviour:
@@ -294,13 +294,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 760e53322676591408ff6bd4ef03d7f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  incrementCount: 10
-  incrementIncrease: 12.4
-  timeToDo: 5
+  tagForSave: FiveYearPlan
+  incrementValue: 8
+  incrementIncrease: 12
+  timeToDo: 3
   difficultMultiple: 1.6
+  upgradeCost: 100
+  upgradeLevel: 0
   globalMoneyText: {fileID: 1171829613}
   moneyReward: {fileID: 1134304031}
   timerText: {fileID: 126528425}
+  upgradeCostLabel: {fileID: 142468338}
+  upgradeLevelLabel: {fileID: 995394645}
   incrementButton: {fileID: 446835276}
 --- !u!4 &385234715
 Transform:
@@ -337,10 +342,14 @@ PrefabInstance:
     - target: {fileID: 16350707866945621, guid: e7a6bb154a2fe56418370790f47069fa, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1427599704}
+      objectReference: {fileID: 925330254}
     - target: {fileID: 16350707866945621, guid: e7a6bb154a2fe56418370790f47069fa, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Upgrade
+      objectReference: {fileID: 0}
+    - target: {fileID: 16350707866945621, guid: e7a6bb154a2fe56418370790f47069fa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: IncrementWithClick, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2040110402531257626, guid: e7a6bb154a2fe56418370790f47069fa, type: 3}
       propertyPath: m_Text
@@ -450,6 +459,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7a6bb154a2fe56418370790f47069fa, type: 3}
+--- !u!1 &505340394
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 505340395}
+  m_Layer: 0
+  m_Name: GameManagers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &505340395
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505340394}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 335.35403, y: 1409.8932, z: -503.16327}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 174618423}
+  - {fileID: 753360917}
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,6 +585,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &753360915
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 753360917}
+  m_Layer: 0
+  m_Name: SaveAndLoadManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &753360917
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753360915}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 33.729187, y: -44.14087, z: 51.324158}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1230262766}
+  - {fileID: 1631624077}
+  m_Father: {fileID: 505340395}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &864318677 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8973440129615309772, guid: e7a6bb154a2fe56418370790f47069fa, type: 3}
@@ -584,13 +657,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 760e53322676591408ff6bd4ef03d7f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  incrementCount: 1
-  incrementIncrease: 1.4
-  timeToDo: 0.5
+  tagForSave: SurpApprop
+  incrementValue: 1
+  incrementIncrease: 2
+  timeToDo: 0.3
   difficultMultiple: 1.8
+  upgradeCost: 5
+  upgradeLevel: 1
   globalMoneyText: {fileID: 1171829613}
   moneyReward: {fileID: 190340778}
   timerText: {fileID: 1893020131}
+  upgradeCostLabel: {fileID: 743138760}
+  upgradeLevelLabel: {fileID: 1116241799}
   incrementButton: {fileID: 864318677}
 --- !u!4 &925330255
 Transform:
@@ -895,6 +973,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1171829611}
   m_CullTransparentMesh: 1
+--- !u!1 &1230262765
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1230262766}
+  - component: {fileID: 1230262767}
+  m_Layer: 0
+  m_Name: SurplusAppropriation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1230262766
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230262765}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 753360917}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1230262767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230262765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dab56c5f78c2930488673271dd553601, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  globalMoneyText: {fileID: 1171829613}
+  moneyReward: {fileID: 190340778}
+  upgradeCostLabel: {fileID: 743138760}
+  upgradeLevelLabel: {fileID: 1116241799}
+  prototype: {fileID: 925330254}
 --- !u!1 &1356429547
 GameObject:
   m_ObjectHideFlags: 0
@@ -977,54 +1103,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1427599702
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1427599703}
-  - component: {fileID: 1427599704}
-  m_Layer: 0
-  m_Name: SurplusAppropriation
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1427599703
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1427599702}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1655187060}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1427599704
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1427599702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5330f8a34a58df846a34228bc76b50b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgradeCost: 5
-  upgradeLevel: 1
-  upgradeCostLabel: {fileID: 743138760}
-  upgradeLevelLabel: {fileID: 1116241799}
-  prototype: {fileID: 925330254}
 --- !u!1 &1469227949
 GameObject:
   m_ObjectHideFlags: 0
@@ -1096,7 +1174,7 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4782742206543560277, guid: e7a6bb154a2fe56418370790f47069fa, type: 3}
   m_PrefabInstance: {fileID: 454021791}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1655187059
+--- !u!1 &1631624076
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1104,30 +1182,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1655187060}
+  - component: {fileID: 1631624077}
+  - component: {fileID: 1631624078}
   m_Layer: 0
-  m_Name: UpgradeManager
+  m_Name: Five-year plan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1655187060
+--- !u!4 &1631624077
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1655187059}
+  m_GameObject: {fileID: 1631624076}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 404.33774, y: 1435.9581, z: 0.8015442}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1427599703}
-  - {fileID: 2027176154}
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Children: []
+  m_Father: {fileID: 753360917}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1631624078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631624076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dab56c5f78c2930488673271dd553601, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  globalMoneyText: {fileID: 1171829613}
+  moneyReward: {fileID: 1134304031}
+  upgradeCostLabel: {fileID: 142468338}
+  upgradeLevelLabel: {fileID: 995394645}
+  prototype: {fileID: 385234714}
 --- !u!114 &1893020131 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2040110402531257626, guid: e7a6bb154a2fe56418370790f47069fa, type: 3}
@@ -1149,14 +1243,18 @@ PrefabInstance:
     - target: {fileID: 16350707866945621, guid: e7a6bb154a2fe56418370790f47069fa, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2027176155}
+      objectReference: {fileID: 385234714}
     - target: {fileID: 16350707866945621, guid: e7a6bb154a2fe56418370790f47069fa, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Upgrade
       objectReference: {fileID: 0}
+    - target: {fileID: 16350707866945621, guid: e7a6bb154a2fe56418370790f47069fa, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: IncrementWithClick, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 2040110402531257626, guid: e7a6bb154a2fe56418370790f47069fa, type: 3}
       propertyPath: m_Text
-      value: 5 sec
+      value: 3 sec
       objectReference: {fileID: 0}
     - target: {fileID: 3895061174512418613, guid: e7a6bb154a2fe56418370790f47069fa, type: 3}
       propertyPath: m_Text
@@ -1283,54 +1381,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4782742206543560277, guid: e7a6bb154a2fe56418370790f47069fa, type: 3}
   m_PrefabInstance: {fileID: 1926325844}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2027176153
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2027176154}
-  - component: {fileID: 2027176155}
-  m_Layer: 0
-  m_Name: Five-year plan
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2027176154
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2027176153}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1655187060}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2027176155
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2027176153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5330f8a34a58df846a34228bc76b50b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgradeCost: 100
-  upgradeLevel: 1
-  upgradeCostLabel: {fileID: 142468338}
-  upgradeLevelLabel: {fileID: 995394645}
-  prototype: {fileID: 385234714}
 --- !u!1 &2133783206
 GameObject:
   m_ObjectHideFlags: 0

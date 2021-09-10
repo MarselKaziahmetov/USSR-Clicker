@@ -2,21 +2,52 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static SaveSystem;
 
 public class IncrementWithClick : MonoBehaviour
 {
     public IncrementWithClick Instance { get; private set; }
 
-    [SerializeField] public float incrementCount;
-    [SerializeField] private float incrementIncrease;
+    [Header("Activities Tag")]
+    [SerializeField] public string tagForSave;
+    
+    [Header("Variables")]
+    [SerializeField] private int incrementValue;
+    [SerializeField] private int incrementIncrease;
     [SerializeField] private float timeToDo;
     [SerializeField] private float difficultMultiple;
-
-    [SerializeField] private Text globalMoneyText;
-    [SerializeField] private Text moneyReward;
+    [SerializeField] private int upgradeCost;
+    [SerializeField] private int upgradeLevel;
+    
+    [Header("Labels")]
+    [SerializeField] public Text globalMoneyText;
+    [SerializeField] public Text moneyReward;
     [SerializeField] private Text timerText;
+    [SerializeField] private Text upgradeCostLabel;
+    [SerializeField] private Text upgradeLevelLabel;
 
-    [SerializeField] private Button incrementButton;
+    [Header("Link for increment button")]
+    [SerializeField] public Button incrementButton;
+
+    private SaveSystem prototype;
+
+    public float IncrementValue
+    {
+        get => PlayerPrefs.GetFloat(tagForSave + "IncrementValue", incrementValue);
+        set => PlayerPrefs.SetFloat(tagForSave + "IncrementValue", value);
+    }
+
+    public float UpgradeCost
+    {
+        get => PlayerPrefs.GetFloat(tagForSave + "UpgradeCost", upgradeCost);
+        set => PlayerPrefs.SetFloat(tagForSave + "UpgradeCost", value);
+    }
+
+    public int UpgradeLevel
+    {
+        get => PlayerPrefs.GetInt(tagForSave + "UpgradeLevel", upgradeLevel);
+        set => PlayerPrefs.SetInt(tagForSave + "UpgradeLevel", value);
+    }
 
     private void Awake()
     {
@@ -38,46 +69,60 @@ public class IncrementWithClick : MonoBehaviour
 
     public void MoneyAddition()
     {
-        Bank.currentMoney += incrementCount;
+        Bank.currentMoney += IncrementValue;
 
         globalMoneyText.text = Bank.currentMoney.ToString();
     }
 
-    public void Upgrade(ref float upgradeCost, ref int upgradeLevel, Text upgradeCostLabel, Text upgradeLevelLabel)
+    public void ActivitiesInteractebleCheck()
     {
-        if (Bank.currentMoney >= upgradeCost)
+        if (UpgradeLevel == 0)
+        {
+            incrementButton.interactable = false;
+        }
+        else
+        {
+            incrementButton.interactable = true;
+        }
+    }
+
+    public void Upgrade()
+    {
+        if (Bank.currentMoney >= UpgradeCost)
         {
             //Повышаем уровень и отображаем это в тексте
-            upgradeLevel++;
-            upgradeLevelLabel.text = upgradeLevel + "/100";
+            UpgradeLevel++;
+            upgradeLevelLabel.text = UpgradeLevel + "/100";
+            
+            ActivitiesInteractebleCheck();
 
             //Отнимаем сумму апгрейда от банка и отображаем это в тексте
-            Bank.currentMoney -= upgradeCost;
+            Bank.currentMoney -= UpgradeCost;
             globalMoneyText.text = Bank.currentMoney.ToString();
 
-            if (upgradeLevel % 10 == 0)
+            if (UpgradeLevel % 10 == 0)
             {
                 //Повышаем производительность активности и отображаем это в тексте
-                incrementCount *= 2;
-                incrementCount = Mathf.Round(incrementCount);
-                moneyReward.text = incrementCount.ToString();
+                IncrementValue *= 2;
+                IncrementValue = Mathf.Round(IncrementValue);
+                moneyReward.text = IncrementValue.ToString();
 
                 //Повышаем цену апгрейда и отображаем это в тексте
-                upgradeCost *= 2;
-                upgradeCost = Mathf.Round(upgradeCost);
-                upgradeCostLabel.text = upgradeCost.ToString();
+                UpgradeCost *= 2;
+                UpgradeCost = Mathf.Round(UpgradeCost);
+                upgradeCostLabel.text = UpgradeCost.ToString();
             }
             else
             {
                 //Повышаем производительность активности и отображаем это в тексте
-                incrementCount += incrementIncrease;
-                incrementCount = Mathf.Round(incrementCount);
-                moneyReward.text = incrementCount.ToString();
+                IncrementValue += incrementIncrease;
+                IncrementValue = Mathf.Round(IncrementValue);
+                moneyReward.text = IncrementValue.ToString();
 
                 //Повышаем цену апгрейда и отображаем это в тексте
-                upgradeCost *= difficultMultiple;
-                upgradeCost = Mathf.Round(upgradeCost);
-                upgradeCostLabel.text = upgradeCost.ToString();
+                UpgradeCost *= difficultMultiple;
+                UpgradeCost = Mathf.Round(UpgradeCost);
+                upgradeCostLabel.text = UpgradeCost.ToString();
             }
         }
     }
